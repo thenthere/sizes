@@ -18,7 +18,7 @@
 
 | ninon - 페이크 워싱 텍스트 티셔츠 | me - 슬림핏 카고 팬츠 & 워시드 플라메 티셔츠 |
 | :---: | :---: |
-| <img src="https://raw.githubusercontent.com/thenthere/sizes/main/images/blue_tshirt.jpg" width="300" alt="Blue Tshirt"> | <img src="https://raw.githubusercontent.com/thenthere/sizes/main/images/pants_white_tshirt.jpg" width="300" alt="Pants and White Tshirt"> |
+| <img src="https://raw.githubusercontent.com/thenthere/sizes/main/images/3A2C3538-FBC5-460E-8130-9773773DACA6_1_105_c.jpeg" width="300" alt="Blue Tshirt"> | <img src="https://raw.githubusercontent.com/thenthere/sizes/main/images/3A2C3538-FBC5-460E-8130-9773773DACA6_1_105_c.jpeg" width="300" alt="Pants and White Tshirt"> |
 
 > 📌 **작성 가이드**
 > * 사진을 GitHub에 함께 관리하시려면 저장소 내에 `images/` 폴더를 만든 후 사진 파일을 업로드하고, 위 이미지 경로(`src`)를 해당 파일 경로로 수정해 주시면 저장소 페이지에서 사진이 바로 노출됩니다.
