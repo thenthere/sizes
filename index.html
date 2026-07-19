@@ -44,7 +44,6 @@
             font-size: 14px;
         }
 
-        /* 필터 버튼 스타일 */
         .filter-container {
             display: flex;
             justify-content: center;
@@ -92,18 +91,24 @@
             display: none !important;
         }
 
-        .image-box {
+        .image-link {
+            display: block;
             width: 100%;
             height: 280px;
-            background-color: #eaeaea;
             overflow: hidden;
             position: relative;
+            cursor: zoom-in; /* 돋보기 아이콘 효과 */
         }
 
-        .image-box img {
+        .image-link img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: opacity 0.2s ease;
+        }
+
+        .image-link:hover img {
+            opacity: 0.9; /* 마우스 오버 시 시각 효과 */
         }
 
         .badge-owner {
@@ -117,6 +122,7 @@
             font-weight: bold;
             text-transform: uppercase;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 10;
         }
 
         .badge-category {
@@ -129,6 +135,7 @@
             border-radius: 6px;
             font-size: 11px;
             font-weight: 500;
+            z-index: 10;
         }
 
         .card-content {
@@ -245,25 +252,26 @@
 
     <header>
         <h1>My Wardrobe & Size Directory</h1>
-        <p>커피 및 화장품 아카이브 스타일 매칭 데이터셋 (Source: sizes.md)</p>
+        <p>Source: sizes.md</p>
     </header>
 
-    <!-- 필터 버튼 바 -->
+    <!-- 필터 버튼 바 (ninon 옷 텍스트 수정) -->
     <div class="filter-container">
         <button class="filter-btn active" onclick="filterOwner('all')">전체보기</button>
         <button class="filter-btn" onclick="filterOwner('me')">내 옷 (me)</button>
-        <button class="filter-btn" onclick="filterOwner('ninon')">니농 옷 (ninon)</button>
+        <button class="filter-btn" onclick="filterOwner('ninon')">ninon 옷</button>
     </div>
 
     <div class="container">
 
         <!-- CARD 1: ninon 워싱 티셔츠 -->
         <div class="card" data-owner="ninon">
-            <div class="image-box">
+            <!-- 이미지 클릭 시 새 창에서 원본 뷰어 지원 -->
+            <a href="images/0495-311-407-blue.jpg" target="_blank" class="image-link" title="원본 이미지 보기">
                 <span class="badge-owner">ninon</span>
                 <span class="badge-category">티셔츠</span>
                 <img src="images/0495-311-407-blue.jpg" alt="워싱 이펙트 텍스트 티셔츠">
-            </div>
+            </a>
             <div class="card-content">
                 <div class="brand-row">
                     <span class="brand zara">ZARA</span>
@@ -298,15 +306,15 @@
 
         <!-- CARD 2: ninon 나이키 스포츠브라 -->
         <div class="card" data-owner="ninon">
-            <div class="image-box">
+            <a href="images/AJ5220-010.jpg" target="_blank" class="image-link" title="원본 이미지 보기">
                 <span class="badge-owner">ninon</span>
                 <span class="badge-category">스포츠브라</span>
                 <img src="images/AJ5220-010.jpg" alt="하이 서포트 스포츠 브라">
-            </div>
+            </a>
             <div class="card-content">
                 <div class="brand-row">
                     <span class="brand nike">NIKE</span>
-                    <span class="code">ART: AJ5220-010</span>
+                    <span class="code">AJ5220-010</span>
                 </div>
                 <h2 class="title">하이 서포트 스포츠 브라</h2>
                 
@@ -332,11 +340,11 @@
 
         <!-- CARD 3: me 슬림핏 카고팬츠 -->
         <div class="card" data-owner="me">
-            <div class="image-box">
+            <a href="images/108-402-710-beige.jpeg" target="_blank" class="image-link" title="원본 이미지 보기">
                 <span class="badge-owner">me</span>
                 <span class="badge-category">팬츠</span>
                 <img src="images/108-402-710-beige.jpeg" alt="슬림핏 카고 팬츠">
-            </div>
+            </a>
             <div class="card-content">
                 <div class="brand-row">
                     <span class="brand zara">ZARA</span>
@@ -374,11 +382,11 @@
 
         <!-- CARD 4: me 워시드 플라메 티셔츠 -->
         <div class="card" data-owner="me">
-            <div class="image-box">
+            <a href="images/4087-832-250_white.jpg" target="_blank" class="image-link" title="원본 이미지 보기">
                 <span class="badge-owner">me</span>
                 <span class="badge-category">티셔츠</span>
                 <img src="images/4087-832-250_white.jpg" alt="워시드 플라메 스트럭쳐 티셔츠">
-            </div>
+            </a>
             <div class="card-content">
                 <div class="brand-row">
                     <span class="brand zara">ZARA</span>
@@ -413,15 +421,12 @@
 
     </div>
 
-    <!-- 필터링 스크립트 -->
     <script>
         function filterOwner(owner) {
-            // 버튼 활성화 클래스 전환
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // 카드 필터링 처리
             const cards = document.querySelectorAll('.card');
             cards.forEach(card => {
                 if (owner === 'all') {
