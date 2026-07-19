@@ -13,6 +13,8 @@
             --accent-zara: #111111;
             --accent-nike: #e63946;
             --border-color: #dee2e6;
+            --filter-btn-bg: #e9ecef;
+            --filter-btn-active: #212529;
         }
 
         body {
@@ -25,10 +27,8 @@
 
         header {
             max-width: 1200px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto 20px auto;
             text-align: center;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 20px;
         }
 
         header h1 {
@@ -40,8 +40,33 @@
 
         header p {
             color: var(--text-sub);
-            margin: 0;
+            margin: 0 0 20px 0;
             font-size: 14px;
+        }
+
+        /* 필터 버튼 스타일 */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            background-color: var(--filter-btn-bg);
+            color: var(--text-main);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn.active {
+            background-color: var(--filter-btn-active);
+            color: #ffffff;
         }
 
         .container {
@@ -60,6 +85,11 @@
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
+            transition: transform 0.2s ease;
+        }
+
+        .card.hidden {
+            display: none !important;
         }
 
         .image-box {
@@ -81,12 +111,24 @@
             top: 15px;
             left: 15px;
             background: rgba(255,255,255,0.9);
-            padding: 4px 10px;
+            padding: 4px 12px;
             border-radius: 20px;
             font-size: 11px;
             font-weight: bold;
             text-transform: uppercase;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .badge-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(33, 37, 41, 0.8);
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
         }
 
         .card-content {
@@ -192,6 +234,11 @@
             color: var(--accent-nike);
             font-weight: 600;
         }
+
+        .date-label {
+            font-size: 11px;
+            color: var(--text-sub);
+        }
     </style>
 </head>
 <body>
@@ -201,12 +248,20 @@
         <p>커피 및 화장품 아카이브 스타일 매칭 데이터셋 (Source: sizes.md)</p>
     </header>
 
+    <!-- 필터 버튼 바 -->
+    <div class="filter-container">
+        <button class="filter-btn active" onclick="filterOwner('all')">전체보기</button>
+        <button class="filter-btn" onclick="filterOwner('me')">내 옷 (me)</button>
+        <button class="filter-btn" onclick="filterOwner('ninon')">니농 옷 (ninon)</button>
+    </div>
+
     <div class="container">
 
         <!-- CARD 1: ninon 워싱 티셔츠 -->
-        <div class="card">
+        <div class="card" data-owner="ninon">
             <div class="image-box">
                 <span class="badge-owner">ninon</span>
+                <span class="badge-category">티셔츠</span>
                 <img src="images/0495-311-407-blue.jpg" alt="워싱 이펙트 텍스트 티셔츠">
             </div>
             <div class="card-content">
@@ -236,15 +291,17 @@
 
                 <div class="price-row">
                     <span class="price-tag">49,900원</span>
+                    <span class="date-label">구매일: 2026-07-12</span>
                 </div>
             </div>
         </div>
 
         <!-- CARD 2: ninon 나이키 스포츠브라 -->
-        <div class="card">
+        <div class="card" data-owner="ninon">
             <div class="image-box">
                 <span class="badge-owner">ninon</span>
-                <img src="images/nike_bra.jpg" alt="하이 서포트 스포츠 브라">
+                <span class="badge-category">스포츠브라</span>
+                <img src="images/AJ5220-010.jpg" alt="하이 서포트 스포츠 브라">
             </div>
             <div class="card-content">
                 <div class="brand-row">
@@ -264,17 +321,21 @@
                 </div>
 
                 <div class="price-row">
-                    <span class="price-tag">34,300원</span>
-                    <span class="discount">30% OFF (정가 49,000원)</span>
+                    <div>
+                        <span class="price-tag">34,300원</span>
+                        <div class="discount">30% OFF (정가 49,000원)</div>
+                    </div>
+                    <span class="date-label">구매일: 미상</span>
                 </div>
             </div>
         </div>
 
         <!-- CARD 3: me 슬림핏 카고팬츠 -->
-        <div class="card">
+        <div class="card" data-owner="me">
             <div class="image-box">
                 <span class="badge-owner">me</span>
-                <img src="images/pants_white_tshirt.jpg" alt="슬림핏 카고 팬츠">
+                <span class="badge-category">팬츠</span>
+                <img src="images/108-402-710-beige.jpeg" alt="슬림핏 카고 팬츠">
             </div>
             <div class="card-content">
                 <div class="brand-row">
@@ -302,16 +363,20 @@
                 </div>
 
                 <div class="price-row">
-                    <span class="price-tag">29,900원</span>
-                    <span class="discount">50% OFF (정가 59,900원)</span>
+                    <div>
+                        <span class="price-tag">29,900원</span>
+                        <div class="discount">50% OFF (정가 59,900원)</div>
+                    </div>
+                    <span class="date-label">구매일: 2026-07-12</span>
                 </div>
             </div>
         </div>
 
         <!-- CARD 4: me 워시드 플라메 티셔츠 -->
-        <div class="card">
+        <div class="card" data-owner="me">
             <div class="image-box">
                 <span class="badge-owner">me</span>
+                <span class="badge-category">티셔츠</span>
                 <img src="images/4087-832-250_white.jpg" alt="워시드 플라메 스트럭쳐 티셔츠">
             </div>
             <div class="card-content">
@@ -341,11 +406,35 @@
 
                 <div class="price-row">
                     <span class="price-tag">49,900원</span>
+                    <span class="date-label">구매일: 2026-07-12</span>
                 </div>
             </div>
         </div>
 
     </div>
 
+    <!-- 필터링 스크립트 -->
+    <script>
+        function filterOwner(owner) {
+            // 버튼 활성화 클래스 전환
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // 카드 필터링 처리
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                if (owner === 'all') {
+                    card.classList.remove('hidden');
+                } else {
+                    if (card.getAttribute('data-owner') === owner) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 </html>
