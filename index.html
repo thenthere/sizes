@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wardrobe & Size Showcase</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #212529;
+            --text-sub: #6c757d;
+            --accent-zara: #111111;
+            --accent-nike: #e63946;
+            --border-color: #dee2e6;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            max-width: 1200px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            color: var(--text-sub);
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-box {
+            width: 100%;
+            height: 280px;
+            background-color: #eaeaea;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge-owner {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255,255,255,0.9);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .brand-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .brand {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .brand.zara { background-color: var(--accent-zara); }
+        .brand.nike { background-color: var(--accent-nike); }
+
+        .code {
+            font-family: monospace;
+            font-size: 11px;
+            color: var(--text-sub);
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            line-height: 1.3;
+        }
+
+        .info-group {
+            background: #f1f3f5;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .info-label {
+            font-size: 11px;
+            color: var(--text-sub);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .size-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .size-item {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            padding: 6px 2px;
+            border-radius: 6px;
+        }
+
+        .size-name {
+            font-size: 9px;
+            color: var(--text-sub);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .size-val {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border-color);
+            margin-top: 15px;
+        }
+
+        .price-tag {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .discount {
+            font-size: 12px;
+            color: var(--accent-nike);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Wardrobe & Size Directory</h1>
+        <p>커피 및 화장품 아카이브 스타일 매칭 데이터셋 (Source: sizes.md)</p>
+    </header>
+
+    <div class="container">
+
+        <!-- CARD 1: ninon 워싱 티셔츠 -->
+        <div class="card">
+            <div class="image-box">
+                <span class="badge-owner">ninon</span>
+                <img src="images/0495-311-407-blue.jpg" alt="워싱 이펙트 텍스트 티셔츠">
+            </div>
+            <div class="card-content">
+                <div class="brand-row">
+                    <span class="brand zara">ZARA</span>
+                    <span class="code">ART: 0495/311/407</span>
+                </div>
+                <h2 class="title">워싱 이펙트 텍스트 티셔츠</h2>
+                
+                <div class="info-group">
+                    <div class="info-label">실측 상세 사이즈</div>
+                    <div class="info-value">가슴 59 / 앞길이 64 / 소매 19.5 / 등너비 55 / 팔너비 21 (cm)</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">기본 정보</div>
+                    <div class="info-value">컬러: 블루 | 대표 사이즈: <strong>S</strong></div>
+                    
+                    <div class="size-grid">
+                        <div class="size-item"><span class="size-name">USA</span><span class="size-val">S</span></div>
+                        <div class="size-item"><span class="size-name">MEX</span><span class="size-val">38</span></div>
+                        <div class="size-item"><span class="size-name">UK</span><span class="size-val">S</span></div>
+                        <div class="size-item"><span class="size-name">IT</span><span class="size-val">S</span></div>
+                        <div class="size-item"><span class="size-name">BR</span><span class="size-val">P</span></div>
+                    </div>
+                </div>
+
+                <div class="price-row">
+                    <span class="price-tag">49,900원</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 2: ninon 나이키 스포츠브라 -->
+        <div class="card">
+            <div class="image-box">
+                <span class="badge-owner">ninon</span>
+                <img src="images/nike_bra.jpg" alt="하이 서포트 스포츠 브라">
+            </div>
+            <div class="card-content">
+                <div class="brand-row">
+                    <span class="brand nike">NIKE</span>
+                    <span class="code">ART: AJ5220-010</span>
+                </div>
+                <h2 class="title">하이 서포트 스포츠 브라</h2>
+                
+                <div class="info-group">
+                    <div class="info-label">실측 상세 사이즈</div>
+                    <div class="info-value">별도 실측값 없음 (HIGH SUPPORT 라인)</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">기본 정보</div>
+                    <div class="info-value">컬러: 블랙 | 대표 사이즈: <strong>M (85)</strong></div>
+                </div>
+
+                <div class="price-row">
+                    <span class="price-tag">34,300원</span>
+                    <span class="discount">30% OFF (정가 49,000원)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 3: me 슬림핏 카고팬츠 -->
+        <div class="card">
+            <div class="image-box">
+                <span class="badge-owner">me</span>
+                <img src="images/pants_white_tshirt.jpg" alt="슬림핏 카고 팬츠">
+            </div>
+            <div class="card-content">
+                <div class="brand-row">
+                    <span class="brand zara">ZARA</span>
+                    <span class="code">ART: 0108/402/710</span>
+                </div>
+                <h2 class="title">슬림핏 카고 팬츠</h2>
+                
+                <div class="info-group">
+                    <div class="info-label">실측 상세 사이즈</div>
+                    <div class="info-value">허리 38 / 엉덩이 50.5 / 총기장 98 / 앞밑위 34 / 뒷밑위 36 (cm)</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">기본 정보</div>
+                    <div class="info-value">컬러: 베이지 | 핏: 슬림핏 (조거 스타일)</div>
+                    
+                    <div class="size-grid">
+                        <div class="size-item"><span class="size-name">USA</span><span class="size-val">S</span></div>
+                        <div class="size-item"><span class="size-name">MEX</span><span class="size-val">30</span></div>
+                        <div class="size-item"><span class="size-name">UK</span><span class="size-val">S</span></div>
+                        <div class="size-item"><span class="size-name">IT</span><span class="size-val">S</span></div>
+                        <div class="size-item"><span class="size-name">BR</span><span class="size-val">P</span></div>
+                    </div>
+                </div>
+
+                <div class="price-row">
+                    <span class="price-tag">29,900원</span>
+                    <span class="discount">50% OFF (정가 59,900원)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 4: me 워시드 플라메 티셔츠 -->
+        <div class="card">
+            <div class="image-box">
+                <span class="badge-owner">me</span>
+                <img src="images/4087-832-250_white.jpg" alt="워시드 플라메 스트럭쳐 티셔츠">
+            </div>
+            <div class="card-content">
+                <div class="brand-row">
+                    <span class="brand zara">ZARA</span>
+                    <span class="code">ART: 4087/832/250</span>
+                </div>
+                <h2 class="title">워시드 플라메 스트럭쳐 티셔츠</h2>
+                
+                <div class="info-group">
+                    <div class="info-label">실측 상세 사이즈</div>
+                    <div class="info-value">가슴 56 / 앞길이 66 / 소매 23.5 / 등너비 54 / 팔너비 23 (cm)</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">기본 정보</div>
+                    <div class="info-value">컬러: 화이트 | 대표 사이즈: <strong>S</strong></div>
+                    
+                    <div class="size-grid">
+                        <div class="size-item"><span class="size-name">USA</span><span class="size-val">S</span></div>
+                        <div class="size-item"><span class="size-name">MEX</span><span class="size-val">38</span></div>
+                        <div class="size-item"><span class="size-name">UK</span><span class="size-val">S</span></div>
+                        <div class="size-item"><span class="size-name">IT</span><span class="size-val">S</span></div>
+                        <div class="size-item"><span class="size-name">BR</span><span class="size-val">P</span></div>
+                    </div>
+                </div>
+
+                <div class="price-row">
+                    <span class="price-tag">49,900원</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
